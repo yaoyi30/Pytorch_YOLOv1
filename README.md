@@ -3,6 +3,7 @@
 # PyTorch YOLOv1 Project
 </div>
 
+
 ### 环境配置
 python version 3.8, torch 1.8.1, torchvision 0.9.1:
 ```
@@ -27,7 +28,7 @@ datasets/
 ```
 ### 训练
 ```
-python train.py --input_size 448 448 --batch_size 32 --epochs 100 --nb_classes 20 --finetune ./weights/resnet50_ram-a26f946b.pth --data_path ./datasets/ --output_dir ./output_dir 
+python train.py --input_size 448 448 --batch_size 32 --epochs 80 --nb_classes 20 --finetune ./weights/resnet50_ram-a26f946b.pth --data_path ./datasets/ --output_dir ./output_dir 
 ```
 ### 评价模型
 ```
@@ -49,12 +50,15 @@ python -m onnxsim best.onnx best_sim.onnx
 #### 2. 学习率曲线
 ![learning_rate.png](output_dir%2Flearning_rate.png)
 
-### Train on VOC2007 + VOC2012
-| model  | backbone | mAP (VOC2007 test) |
-|:------:|:--------------:|:------------------:|
-| YOLOv1 |    ResNet50    |        0.63        |
 
 ### 结果可视化
+
+#### Train on VOC2007 + VOC2012
+
+| model  | backbone | mAP (VOC2007 test) |
+|:------:|:--------------:|:------------------:|
+| YOLOv1 |    ResNet50    |        0.65        |
+
 ![dog.png](output_dir%2Fdog.png)
 
 ![person.png](output_dir%2Fperson.png)

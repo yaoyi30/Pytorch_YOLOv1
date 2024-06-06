@@ -20,8 +20,8 @@ def get_args_parser():
     parser.add_argument('--input_size', default=[448,448],nargs='+',type=int,help='images input size')
     parser.add_argument('--weights', default='./output_dir/last.pth', type=str,help='dataset path')
     parser.add_argument('--nb_classes', default=20, type=int,help='number of the classification types')
-    parser.add_argument('--conf_thresh', default=0.1, type=float,help='thresh of cls conf')
-    parser.add_argument('--prob_thresh', default=0.1, type=float,help='thresh of predict prob')
+    parser.add_argument('--conf_thresh', default=0.2, type=float,help='thresh of cls conf')
+    parser.add_argument('--prob_thresh', default=0.2, type=float,help='thresh of predict prob')
     parser.add_argument('--nms_thresh', default=0.5, type=float,help='nms thresh of predict prob')
 
     parser.add_argument('--grid_size', default=7, type=int,help='grid size of each image')

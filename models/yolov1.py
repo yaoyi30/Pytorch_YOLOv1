@@ -5,13 +5,28 @@
 # CSDN: https://blog.csdn.net/qq_38412266?type=blog #
 #####################################################
 
-from torchvision.models.resnet import Bottleneck
 import math
 import torch.nn as nn
-from PIL import Image
-import torchvision.transforms as T
 import torchvision.models.resnet
-import torch
+from torchvision.models.resnet import Bottleneck
+
+class NeckNet(nn.Module):
+    def __init__(self, in_channels,out_channels):
+        super(NeckNet, self).__init__()
+
+        self.conv1 = nn.Conv2d(in_channels,out_channels, 3,stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(out_channels)
+        self.relu = nn.ReLU(inplace=True)
+
+    def forward(self, x):
+
+        identity = x
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out += identity
+        out = self.relu(out)
+
+        return out
 
 
 class YOLOv1(torchvision.models.resnet.ResNet):
@@ -22,7 +37,7 @@ class YOLOv1(torchvision.models.resnet.ResNet):
         self.B = num_bboxes
         self.C = num_classes
 
-        self.layer5 = Bottleneck(inplanes=2048,planes=512,stride=1)
+        self.layer5 = NeckNet(2048,2048)
 
         self.end = nn.Sequential(
             nn.Conv2d(2048, self.C + self.B * 5, 3,stride=2, padding=1),
