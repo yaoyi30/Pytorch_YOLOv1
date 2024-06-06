@@ -61,6 +61,8 @@ python -m onnxsim best.onnx best_sim.onnx
 
 ![dog.png](output_dir%2Fdog.png)
 
-![person.png](output_dir%2Fperson.png)
+![car.png](output_dir%2Fcar.png)
+
+![dogs.png](output_dir%2Fdogs.png)
 
 ![people.png](output_dir%2Fpeople.png)
